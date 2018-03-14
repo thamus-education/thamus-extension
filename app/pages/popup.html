@@ -1,0 +1,38 @@
+<!doctype html>
+<html ng-app='thamusChromeApp' ng-csp=''>
+  <head>
+    <base href="/">
+    <meta charset="utf-8">
+
+<!--     <link href="/bower_components/angular/angular-csp.css" rel="stylesheet">
+    <link href="/styles/bootstrap.min.css" rel="stylesheet"> 
+    <link href="/styles/bootstrap-reset.css" rel="stylesheet">
+    <link href="/styles/jquery-ui-1.10.3.css" rel="stylesheet">   -->
+    
+    <link href="/styles/main.css" rel="stylesheet">
+    <link href="/styles/styles.css" rel="stylesheet">
+
+
+    <!-- build:js styles/popup-vendor.css -->
+    <!-- bower:js -->
+<!--     <script  type="text/javascript" src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/bower_components/angular-route/angular-route.min.js"></script>
+    <script src="/bower_components/ngstorage/ngStorage.js"></script> -->
+    
+    <script src="/scripts/popup/app.js"></script>
+
+    <script src="/scripts/popup/popup/popup.controller.js"></script>
+    <script src="/scripts/popup/main/main.controller.js"></script>
+
+    <script src="/scripts/popup/services/authentication.service.js"></script>
+    <script src="/scripts/popup/services/redirect.service.js"></script>
+
+    <!-- <script src="/scripts/helpers/iframe.js"></script> -->
+    <!-- endbower -->
+    <!-- endbuild -->
+  </head>
+  <body class="login-chrome">
+     <div ng-view></div>
+  </body>
+</html>

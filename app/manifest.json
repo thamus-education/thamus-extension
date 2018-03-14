@@ -1,0 +1,59 @@
+{
+  "name": "Thamus",
+  "short_name": "Thamus",
+  "description": "Aprender inglês com filmes e séries nunca foi tão fácil",
+  "version": "0.1.0",
+  "manifest_version": 2,
+  "default_locale": "en",
+  "minimum_chrome_version": "55.0.0",
+  "icons": {
+    "16": "images/icon-16.png",
+    "128": "images/icon-128.png"
+  },
+  "background": {
+    "scripts": [
+      "scripts/background.js"
+    ]
+  },
+  "permissions": [
+    "tabs",
+    "storage",
+    "identity",
+    "activeTab",
+    "webRequest",
+    "webRequestBlocking",
+    "http://*/*",
+    "https://*/*",
+    "*://*/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "scripts/contentscript.js"
+      ],
+      "run_at": "document_end",
+      "all_frames": true
+    }
+  ],
+  "browser_action": {
+    "default_icon": {
+      "19": "images/icon-19.png",
+      "38": "images/icon-38.png"
+    },
+    "default_title": "Thamus",
+    "default_popup": "pages/popup.html"
+  },
+  "content_security_policy": "script-src 'self'; object-src 'self'",
+  "web_accessible_resources": [
+    "fonts/*",
+    "scripts/*",
+    "images/*",
+    "html/*",
+    "styles/*",
+    "pages/*"
+  ]
+}

@@ -1,0 +1,25 @@
+  <div class="container">
+    <form class="form-signin" ng-submit="vm.onSubmit()" style='margin: 0px auto;'>
+      <div class="form-signin-heading text-center">
+        <img src="images/login-logo.png" alt=""/>
+      </div>
+      <div class="login-wrap">
+        <button class="btn btn-lg btn-block btn-primary btn-facebook" type="button" ng-click="vm.onFacebook()"> <span class="pull-left"><i class="fa fa-facebook"></i></span> <span class="bold">Login com Facebook</span></button>
+        <p> Digite seus dados abaixo:</p>
+        <input type="text" class="form-control" placeholder="E-mail" autofocus ng-model="vm.credentials.email">
+        <input type="password" class="form-control" placeholder="Senha" ng-model="vm.credentials.password">
+        <p class="help-block">{{ vm.error }}</p>
+
+        <button class="btn btn-lg btn-login btn-block" type="submit">
+          <i class="fa fa-check"></i>
+        </button>
+
+        <div class="registration">
+          Ainda não é cadastrado?
+          <a class="" href="#" ng-click="vm.cadastrar()">
+            Cadastre-se
+          </a>
+        </div>
+      </div>
+    </form>
+  </div>

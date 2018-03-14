@@ -1,0 +1,8 @@
+.thamusFrame {
+  z-index: 999999 !important;
+  position: fixed !important;
+  right: 1px !important;
+  bottom: 1px !important;
+  overflow: hidden !important;
+  background-color: transparent !important;
+}

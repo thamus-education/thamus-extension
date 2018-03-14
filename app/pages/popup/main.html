@@ -1,0 +1,27 @@
+<div class="container">
+
+  <div class="form-signin-heading text-center">
+    <img src="images/login-logo.png" alt=""/>
+  </div>
+
+  <h2 class='text-center'>Olá, {{ data.name }}</h2>
+  <hr/>
+  <div class='row'>
+    <div class="checkbox">
+      <label><input type="checkbox" value="" ng-change="mudaStatus('yt')" ng-model="checkboxModel.yt"> <span class="cr"><i class="cr-icon glyphicon fa fa-check"></i></span>Carregar botão no Youtube ©</label>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" value="" ng-model="checkboxModel.netflix" ng-change="mudaStatus('netflix')"> <span class="cr"><i class="cr-icon fa fa-check"></i></span>Carregar botão no Netflix ©</label>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" value="" ng-model="checkboxModel.geral" ng-change="mudaStatus('geral')"> <span class="cr"><i class="cr-icon fa fa-check"></i></span>Carregar botão em sites genéricos</label>
+    </div>
+    <div>
+      <div class='row margin-top'>
+        <div class='col-md-12'>
+          <button class='btn btn-lg btn-success btn-block' ng-click='logout()'>Logout</button>
+        </div>
+      </div> 
+    </div>
+  </div>
+</div>
