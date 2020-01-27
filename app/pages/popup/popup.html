@@ -1,25 +1,72 @@
-  <div class="container">
+  <div class="container login-page">
     <form class="form-signin" ng-submit="vm.onSubmit()" style='margin: 0px auto;'>
       <div class="form-signin-heading text-center">
-        <img src="images/login-logo.png" alt=""/>
+        <img src="images/logo-outline.svg" style="max-width: 250px;" alt=""/>
       </div>
       <div class="login-wrap">
-        <button class="btn btn-lg btn-block btn-primary btn-facebook" type="button" ng-click="vm.onFacebook()"> <span class="pull-left"><i class="fa fa-facebook"></i></span> <span class="bold">Login com Facebook</span></button>
-        <p> Digite seus dados abaixo:</p>
-        <input type="text" class="form-control" placeholder="E-mail" autofocus ng-model="vm.credentials.email">
-        <input type="password" class="form-control" placeholder="Senha" ng-model="vm.credentials.password">
-        <p class="help-block">{{ vm.error }}</p>
+          <input type="text" class="form-control" placeholder="E-mail" autofocus ng-model="vm.credentials.email">
+          <input type="password" class="form-control" placeholder="Senha" ng-model="vm.credentials.password">
+          <p class="help-block">{{ vm.error }}</p>
 
-        <button class="btn btn-lg btn-login btn-block" type="submit">
-          <i class="fa fa-check"></i>
+  
+          <div class="registration">
+            <button class="btn btn-lg btn-block btn-success btn-login" type="submit">
+              <span class="bold">
+                Login
+              </span>
+            </button>
+          </div>
+
+        <button class="btn btn-lg btn-block btn-primary btn-facebook" type="button" ng-click="vm.onFacebook()">
+          <span class="pull-left">
+            <i class="fa fa-facebook"></i>
+          </span>
+          <span class="bold">
+            Entrar com o Facebook
+          </span>
         </button>
 
-        <div class="registration">
-          Ainda não é cadastrado?
-          <a class="" href="#" ng-click="vm.cadastrar()">
-            Cadastre-se
-          </a>
-        </div>
+        <button class="btn btn-lg btn-block btn-white btn-google" type="button" ng-click="vm.onGoogle()">
+          <span class="pull-left"><img
+            style="max-width: 14px"
+            src="images/google-logo.png"
+          /></span>
+          <span class="bold">
+            Entrar com o Google
+          </span>
+        </button>
       </div>
     </form>
   </div>
+
+
+<style>
+  .login-page {
+    margin-top: calc(env(safe-area-inset-top) * -1);
+  }
+  
+  .login-background {
+    background-image: url('images/background.svg');
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .btn-google {
+    color: #777777!important;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    text-transform: initial;
+    height: 42px;
+  }
+
+  .background-video {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  </style>

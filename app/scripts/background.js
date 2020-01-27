@@ -1,10 +1,7 @@
 import axios from 'axios'
 import _ from 'lodash'
 
-const successURL = 'www.facebook.com/connect/login_success.html'
-
-// wrapper around chrome.tabs.query function
-const tabsPromise = function (args) {
+const getAllTabs = function (args) {
   return new Promise(function(resolve, reject) {
     chrome.tabs.query(args, function (tabs){
       resolve(tabs)
@@ -12,36 +9,44 @@ const tabsPromise = function (args) {
   });
 }
 
-async function onFacebookLogin(tabId, changeInfo, tab){
-  let tabs = await tabsPromise({}) // get all tabs
-  let facebookTab = _.find(tabs, tab => tab.url.indexOf(successURL) !== -1)
+function getParameterByName(url, name) {
+  if (!url) url = window.location.href;
+  name = name.replace(/[\[\]]/g, '\\$&');
+  var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+      results = regex.exec(url);
+  if (!results) return null;
+  if (!results[2]) return '';
+  return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
 
-  if (!facebookTab) {
+async function onOAuthLogin(tabId, changeInfo, tab){
+  const tabs = await getAllTabs({})
+  const extensionTab = _.find(tabs, tab => tab.url.indexOf('isThamusExtension') !== -1)
+
+  if (!extensionTab) {
     return
   }
 
-  try {
-    // extract access token
-    var params = facebookTab.url.split('#')[1];
-    var accessToken = params.split('&')[0];
-    accessToken = accessToken.split('=')[1];
+  const isThamusExtension = getParameterByName(extensionTab.url, 'isThamusExtension')
+  const token = getParameterByName(extensionTab.url, 'token')
 
-    // remove facebook tab
-    chrome.tabs.remove(facebookTab.id)
-
-    // login user to thamus website
-    let user = await axios.get('https://graph.facebook.com/me/?access_token=' + accessToken)
-    let token = await axios.get('https://thamus.com.br/api/users/auth/facebook/chrome/' + user.data.id)
-    chrome.storage.local.set({'thamus-chrome-token': token.data.data})
-    
-    // notify that this was a sucess
-    let currentTab = await tabsPromise({ currentWindow: true, active : true })
-    chrome.tabs.sendMessage(currentTab[0].id, {'action': 'login-success'})
-  } catch (e) {
-    // notify that an error occured
-    let currentTab = await tabsPromise({ currentWindow: true, active : true })
-    chrome.tabs.sendMessage(currentTab[0].id, {'action': 'login-error'})
+  if (isThamusExtension != 'true') {
+    return
   }
+
+  if (!token) {
+    return
+  }
+
+  chrome.storage.local.set({ 'thamus-chrome-token': token })
+
+  chrome.tabs.remove(extensionTab.id)
+  
+  const currentTab = await getAllTabs({ currentWindow: true, active: true })
+  chrome.tabs.sendMessage(currentTab[0].id, {'action': 'login-success'})
+
+  // let currentTab = await getAllTabs({ currentWindow: true, active : true })
+  // chrome.tabs.sendMessage(currentTab[0].id, {'action': 'login-error'})
 }
 
-chrome.tabs.onUpdated.addListener(onFacebookLogin)
+chrome.tabs.onUpdated.addListener(onOAuthLogin)

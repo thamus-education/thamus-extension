@@ -12,7 +12,7 @@ function mainCtrl ($location, authentication, $scope, $window, $rootScope) {
   $scope.checkboxModel = {
     yt : true,
     netflix : true,
-    geral: true 
+    geral: false // disable general for now 
   };
 
   $scope.logout = function() {

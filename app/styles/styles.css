@@ -12,7 +12,7 @@ Author: ThemeBucket
 
 body {
     background: #FFF;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
     color: #7a7676;
     line-height: 20px;
     overflow-x: hidden;
@@ -20,7 +20,7 @@ body {
 }
 
 input, select, textarea {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
     color: #767676;
 }
 
@@ -37,7 +37,7 @@ a:focus, a:active, a:hover {
 }
 
 h1, h2, h3, h4, h5 {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 .mtop10 {
@@ -68,7 +68,7 @@ hr {
 }
 
 .form-signin .form-signin-heading {
-    margin: 0;
+    margin-bottom: 15px;
     padding: 15px 15px 0px 15px;
     text-align: center;
     color: #fff;
@@ -88,7 +88,7 @@ hr {
 
 .termos {
     font-size: 13px;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 
@@ -112,27 +112,46 @@ hr {
 }
 
 
-.form-signin .btn-login {
+/* .form-signin {
     background: #6bc5a4;
     color: #fff;
     text-transform: uppercase;
     font-weight: normal;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
     margin: 10px 0 5px;
     padding: 5px;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     transition: all 0.3s;
     font-size: 30px;
+} */
+
+.form-signin {
+    background: transparent;
+}
+
+.btn-login {
+    background-color: #4caf50!important;
+    border-color: #4caf50!important;
+    width: 100%;
+    height: 42px;
+    font-size: 15px;
+    text-transform: initial;
+    margin-bottom: 10px;
 }
 
 .btn-facebook {
-    background: #2D5F9A;
+    background-color: rgb(38, 114, 203);
+    border-color: rgb(38, 114, 203);
+    width: 100%;
+    height: 42px;
+    font-size: 15px;
+    text-transform: initial;
     margin-bottom: 10px;
 }
 
 .btn-facebook:hover {
-    background: #3A73B6;
+    border-color: rgb(38, 114, 203);
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     transition: all 0.3s;

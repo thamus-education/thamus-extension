@@ -7,8 +7,8 @@
 authentication.$inject = ['$http', '$window', '$location', '$rootScope', '$localStorage'];
 function authentication ($http, $window, $location, $rootScope, $localStorage) {
 
-    var saveToken = function (token) {
-      chrome.storage.local.set({'thamus-chrome-token': token});
+  var saveToken = function (token) {
+      chrome.storage.local.set({'thamus-chrome-token': token.token });
     };
 
     var getToken = function (cb) {
@@ -48,14 +48,13 @@ function authentication ($http, $window, $location, $rootScope, $localStorage) {
     };
 
     var login = function(user) {
-      return $http.post('https://thamus.com.br/api/users/login', user).then(function(data) {
+      return $http.post('https://api.thamus.com.br/v1/login', user).then(function(data) {
         saveToken(data.data.token);
       });
     };
 
     var logout = function() {
       chrome.storage.local.remove('thamus-chrome-token');
-      console.log('felipe')
       $location.path('/popup.html');
     };
 

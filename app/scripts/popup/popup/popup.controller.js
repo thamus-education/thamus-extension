@@ -18,7 +18,11 @@ function loginCtrl($location, authentication, $scope, $window) {
   };
 
   vm.onFacebook = function () {
-    $window.open('https://www.facebook.com/dialog/oauth?client_id=267659906914316&response_type=token&scope=email&redirect_uri=http://www.facebook.com/connect/login_success.html');
+    $window.open('https://api.thamus.com.br/v1/connect/facebook?isThamusExtension=true')
+  }
+
+  vm.onGoogle = function () { 
+    $window.open('https://api.thamus.com.br/v1/connect/google')
   }
 
   vm.cadastrar = function () {
