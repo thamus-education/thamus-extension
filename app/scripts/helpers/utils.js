@@ -187,13 +187,21 @@ module.exports = new(function Utils () {
     document.head.appendChild(s) 
   }
 
+  const injectStringScript = function (script) {
+    let s = document.createElement("script")
+    s.type = 'text/javascript';
+    s.innerHTML = script
+    document.head.appendChild(s) 
+  }
+
   return {
     isFerrisRequested: isFerrisRequested,
     isNotForbidden: isNotForbidden,
     cleanLinks: cleanLinks,
     nlpText: nlpText,
     injectStyle: injectStyle,
-    injectScript: injectScript
+    injectScript: injectScript,
+    injectStringScript
   }
 
   function cleanLinks (classe) {

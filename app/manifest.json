@@ -7,8 +7,10 @@
   "default_locale": "en",
   "minimum_chrome_version": "55.0.0",
   "icons": {
-    "16": "images/icon-16.png",
-    "128": "images/icon-128.png"
+    "20": "images/icon-20.png",
+    "40": "images/icon-40.png",
+    "120": "images/icon-60@2x.png",
+    "167": "images/icon-167.png"
   },
   "background": {
     "scripts": [
@@ -41,8 +43,8 @@
   ],
   "browser_action": {
     "default_icon": {
-      "19": "images/icon-19.png",
-      "38": "images/icon-38.png"
+      "20": "images/icon-20.png",
+      "40": "images/icon-40.png"
     },
     "default_title": "Thamus",
     "default_popup": "pages/popup.html"

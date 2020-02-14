@@ -1,7 +1,30 @@
 // import $ from 'jquery'
 // import axios from 'axios'
+import Utils from './helpers/utils'
 
-// import Utils from './helpers/utils'
+function getToken (){
+  return new Promise(function(resolve, reject) {
+    chrome.storage.local.get('thamus-chrome-token', function (items) {
+      resolve(items['thamus-chrome-token'])
+    })
+  })
+}
+
+async function main() { 
+  if (window.self === window.top) {
+    const THAMUS_APP_DATA = {
+      token: await getToken()
+    }
+
+    // only inject if it is logged
+    if (THAMUS_APP_DATA.token) {
+      Utils.injectStringScript(`var THAMUS_APP_DATA = ${JSON.stringify(THAMUS_APP_DATA)}`)
+      Utils.injectScript('/scripts/general.js')
+    }
+  }
+}
+
+main()
 // import Auth from './helpers/auth'
 // import GeneralStudy from './helpers/general'
 // import Ferris from './helpers/ferris'
