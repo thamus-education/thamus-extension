@@ -10,9 +10,9 @@ mainCtrl.$inject = ['$location','authentication', '$scope', '$window', '$rootSco
 function mainCtrl ($location, authentication, $scope, $window, $rootScope) {
 
   $scope.checkboxModel = {
-    yt : true,
+    youtube : true,
     netflix : true,
-    geral: false // disable general for now 
+    general: false // disable general for now 
   };
 
   $scope.logout = function() {
@@ -59,7 +59,6 @@ function mainCtrl ($location, authentication, $scope, $window, $rootScope) {
 
   authentication.currentUser(function (user) {
     $scope.data.name = user.name;
-    console.log(user.limit);
     $scope.$apply() 
   })
 }

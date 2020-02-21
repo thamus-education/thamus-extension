@@ -2,6 +2,23 @@
 // import axios from 'axios'
 import Utils from './helpers/utils'
 
+const initInterval = setInterval(function () {
+  if (!document || !document.head || !document.body) {
+    return;
+  }
+
+  if(window.self !== window.top) {
+    return
+  }
+
+  clearInterval(initInterval)
+
+  // add div to know if extension is installed
+  const thamusExtension = document.createElement('div');
+  thamusExtension.id = "thamusExtension"
+  document.body.appendChild(thamusExtension);
+}, 100)
+
 function getToken (){
   return new Promise(function(resolve, reject) {
     chrome.storage.local.get('thamus-chrome-token', function (items) {
