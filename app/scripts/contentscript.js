@@ -19,6 +19,27 @@ const initInterval = setInterval(function () {
   document.body.appendChild(thamusExtension);
 }, 100)
 
+
+async function getVisibility() {
+  const visible = {};
+
+  const promises = ['netflix', 'youtube', 'general'].map(context => {
+    return new Promise(function(resolve, reject) {
+      chrome.storage.local.get('thamus-settings-' + context, function (items) {
+        const isVisible = items['thamus-settings-' + context]
+
+        visible[context] = isVisible
+
+        resolve(items['thamus-settings-' + context])
+      })
+    })
+  })
+
+  await Promise.all(promises)
+  
+  return visible
+}
+
 function getToken (){
   return new Promise(function(resolve, reject) {
     chrome.storage.local.get('thamus-chrome-token', function (items) {
@@ -30,7 +51,8 @@ function getToken (){
 async function main() { 
   if (window.self === window.top) {
     const THAMUS_APP_DATA = {
-      token: await getToken()
+      token: await getToken(),
+      visible: await getVisibility()
     }
 
     // only inject if it is logged
@@ -42,6 +64,22 @@ async function main() {
 }
 
 main()
+
+if (window.self === window.top) {
+  chrome.storage.onChanged.addListener(function (changes, namespace) {
+    for (var key in changes) {
+      var storageChange = changes[key];
+      
+      const context = key.replace('thamus-settings-', '')
+      const isVisible = storageChange.newValue
+      
+      const params = { context , isVisible }
+      
+      Utils.injectStringScript(`setVisibility && setVisibility(${JSON.stringify(params)})`)
+    }
+  });
+}
+
 // import Auth from './helpers/auth'
 // import GeneralStudy from './helpers/general'
 // import Ferris from './helpers/ferris'
