@@ -1,7 +1,7 @@
 {
   "name": "Thamus",
   "private": true,
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Aprender inglês com filmes e séries nunca foi tão fácil",
   "scripts": {
     "start": "npm run dev:chrome",

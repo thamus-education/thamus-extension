@@ -24,7 +24,7 @@ async function getVisibility() {
   const visible = {};
 
   const promises = ['netflix', 'youtube', 'general'].map(context => {
-    return new Promise(function(resolve, reject) {
+    return new Promise(function(resolve, _reject) {
       chrome.storage.local.get('thamus-settings-' + context, function (items) {
         const isVisible = items['thamus-settings-' + context]
 

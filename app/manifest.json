@@ -2,9 +2,8 @@
   "name": "Thamus",
   "short_name": "Thamus",
   "description": "Aprender inglês com filmes e séries nunca foi tão fácil",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "manifest_version": 2,
-  "default_locale": "en",
   "minimum_chrome_version": "55.0.0",
   "icons": {
     "20": "images/icon-20.png",
