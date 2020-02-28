@@ -22,6 +22,9 @@
       "chrome"
     ]
   },
+  "resolutions": {
+    "graceful-fs": "4.2.3"
+  },
   "devDependencies": {
     "babel-cli": "6.x.x",
     "babel-core": "6.x.x",
@@ -29,7 +32,7 @@
     "babel-preset-env": "1.x.x",
     "chai": "4.x.x",
     "chromereload": "0.x.x",
-    "css-loader": "^0.28.7",
+    "css-loader": "^3.4.2",
     "debounce": "1.x.x",
     "del": "3.x.x",
     "gulp": "3.x.x",
@@ -50,9 +53,18 @@
     "gulp-tag-version": "1.x.x",
     "gulp-util": "3.x.x",
     "gulp-zip": "^4.x.x",
+    "postcss-import": "^12.0.1",
+    "postcss-load-config": "^2.1.0",
+    "postcss-loader": "^3.0.0",
+    "postcss-url": "^8.0.0",
     "require-dir": "0.x.x",
     "standard": "^10.0.2",
+    "style-loader": "^1.1.3",
+    "url-loader": "^3.0.0",
     "vinyl-named": "1.x.x",
+    "vue-loader": "^15.9.0",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.6.11",
     "webpack": "3.x.x",
     "webpack-stream": "3.x.x",
     "yargs": "^8.x.x"
@@ -74,6 +86,7 @@
     "mark.js": "^8.11.0",
     "ngstorage": "^0.3.11",
     "sweetalert2": "^5.3.8",
+    "vue": "^2.6.11",
     "webui-popover": "^1.2.18"
   }
 }

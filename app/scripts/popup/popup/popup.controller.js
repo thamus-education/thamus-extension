@@ -22,7 +22,7 @@ function loginCtrl($location, authentication, $scope, $window) {
   }
 
   vm.onGoogle = function () { 
-    $window.open('https://api.thamus.com.br/v1/connect/google')
+    $window.open('https://api.thamus.com.br/v1/connect/google?isThamusExtension=true')
   }
 
   vm.cadastrar = function () {
