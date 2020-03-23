@@ -80,6 +80,65 @@ if (window.self === window.top) {
   });
 }
 
+// https://krasimirtsonev.com/blog/article/Send-message-from-web-page-to-chrome-extensions-background-script
+document.addEventListener("thamusGoogleTranslate", function (ev) {
+  chrome.runtime.sendMessage({ event: "thamusGoogleTranslate", data: ev.detail }, function (response) {
+    if (response.hasError) {
+      return
+    }
+
+    const data = response.result.data
+
+    let result = {
+      _id: Math.random(),
+      "word": " ",
+      "from": "eng",
+      "to": "por",
+      "source": "google_translate",
+    }
+
+    if (data.sentences) {
+      result.translations = [
+        {
+          _id: Math.random(),
+          pos: "",
+          word: data.sentences.map(sentence => sentence.trans).join(" ")
+        }
+      ]
+    }
+
+    if (data.text) {
+      result.translations = [
+        {
+          _id: Math.random(),
+          pos: "",
+          word: data.text
+        }
+      ]
+    }
+
+    // check if this is single translation
+    if (data.dict) {
+      console.log(response)
+      result.word = response.message.data.text
+
+      result.translations = []
+
+      data.dict.forEach(trans => {
+        trans.terms.forEach(term => {
+          result.translations.push({
+            _id: Math.random(),
+            pos: trans.pos,
+            word: term
+          })
+        })
+      })
+    }
+
+    Utils.injectStringScript(`_thamus && _thamus.addTranslation(${JSON.stringify(result)})`)
+  });
+});
+
 // import Auth from './helpers/auth'
 // import GeneralStudy from './helpers/general'
 // import Ferris from './helpers/ferris'
